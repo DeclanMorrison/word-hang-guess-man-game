@@ -216,7 +216,7 @@ function guesser(key){
 function reset(){
     blankizer();
     guessedLetters = [];
-    triesRemaining = 6;
+    triesRemaining = 10;
     $(".guessed-letters").text(guessedLetters);
     $("#counter").text("Tries Remaining: " + triesRemaining);
     $(".wins").text("Wins: " + wins);
