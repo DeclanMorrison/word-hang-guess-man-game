@@ -1,0 +1,17 @@
+Need an array of words
+
+Event to log the keys pressed
+
+make sure letters are not checked twice per word
+
+Display blanks instead of letters, probably using some kind of length thing
+
+Uncover correct letters as they are pressed 
+
+add a bank of incorrect letters 
+
+
+
+non requried:
+add a guess-the-word option
+
