@@ -7,7 +7,6 @@ var losses = 0;
 //Function to generate a random number based on array length
 function Random(){
     var length = words.length;
-    // console.log(length);
     var rand = (Math.floor(Math.random() * length));
     return rand;
 };
@@ -59,10 +58,8 @@ var words = [
 //Function generates a random number, and uses it to randomly
 //pick a word out of the array, returns word.
 function pickAword(){
-    // console.log("Clicked!");
     var index = Random();
     index.toString;
-    // console.log("Index is: " + index)
     var word = words[index];
     return word;
 };
@@ -76,7 +73,6 @@ function blankizer(){
 
     //Converts the string into an array of sub-strings, including spaces.
     wordArray = word.split("");
-    // console.log(wordArray);
 
     //Clones wordArray into new blankArray
     blankArray = wordArray.slice();
@@ -91,12 +87,9 @@ function blankizer(){
             blankArray[index] = "_";
         };
     });
-    // console.log(blankArray);
     
     //Creates a string from blankArray to be displayed in the browser
     displayArray = blankArray.join("");
-
-    // console.log(displayArray);
 
     //Updates the browser with the new text
     $(".text-goes-here").text(displayArray);
@@ -112,8 +105,6 @@ function guesser(key){
 
     //converts the key string to lowercase incase of capslock or shift
     keyLetter = keyLetter.toLowerCase();
-    // console.log(keyLetter);
-    // console.log(keyCode);
 
     //defines an index that will hold the indexes of correctly guessed letters
     indexOfCorrectLetter = [];
@@ -144,7 +135,6 @@ function guesser(key){
                 });
     
             guessedLetters.push(keyLetter);
-            // console.log(guessedLetters);
         };
 
 
@@ -156,63 +146,36 @@ function guesser(key){
 
         var guessedLettersUnique = guessedLetters.filter(onlyUnique);
 
-        // console.log(indexOfCorrectLetter);
-
         //Goes through the blank array and changes the corresponding
         //indexes to the guessed letter, if correct.
         $.each(indexOfCorrectLetter, function(index, value){
             blankArray[value] = keyLetter;
         });
 
+        //Updates the array with the correctly guessed letters displayed
         displayArray = blankArray.join("");
 
-        // console.log(displayArray);
-
+        //Updates the html elements on screen
         $(".guessed-letters").text(guessedLettersUnique);
         $(".text-goes-here").text(displayArray);
         
+        //If the user runs out of tries, it is alerted, losses is incremented by 1, and the reset function is called.
         if (triesRemaining <= 0){
         alert("You have lost!");
         losses++;
         reset();    
         };
 
+        //Checks if the blank array has any blanks left, if not (all letters have been correctly guessed), the the user wins, wins is incremented, and reset is called.
         if (!(blankArray.includes("_"))){
             alert("You have won!");
             wins++;
             reset();
         };
     };    
+};
 
-    
-
-    
-    
-    
-    /*
-    okay so its gonna take the key, convert it to lowercase, done
-    
-    then loop through the current word array, at wordArray, and check if any of the indexes
-    have values that are equal to the key pressed. 
-    
-    THEN it will record the 
-    indexes in its own array, go to the blankArray and based on the stored
-    indexes and replace the _'s with the typed letter. Then update by
-    changing the array on screen.
-
-    if the key pressed does not match any of the letters in wordArray,
-    then a try is deducted from the player.
-
-    An on screen bank must be added that stores either all guessed letters,
-    or wrongly guessed letters. Which ever is easier.
-
-    Also if time add a failsafe that alerts\prevents the user if a letter  
-    has already been guessed.
-
-    Maybe add visuals if time.
-    */
-}
-
+//Resets the game and updates html elements, while keeping the number of wins and losses.
 function reset(){
     blankizer();
     guessedLetters = [];
@@ -221,4 +184,4 @@ function reset(){
     $("#counter").text("Tries Remaining: " + triesRemaining);
     $(".wins").text("Wins: " + wins);
     $(".losses").text("Losses: " + losses);
-}
+};
