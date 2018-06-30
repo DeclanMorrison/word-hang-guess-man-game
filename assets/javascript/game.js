@@ -1,6 +1,6 @@
 //Define Global Variables
 var guessedLetters = [];
-var triesRemaining = 6;
+var triesRemaining = 10;
 var wins = 0;
 var losses = 0;
 
