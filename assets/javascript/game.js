@@ -59,7 +59,6 @@ var words = [
 //pick a word out of the array, returns word.
 function pickAword(){
     var index = Random();
-    index.toString;
     var word = words[index];
     return word;
 };
@@ -110,6 +109,8 @@ function guesser(key){
     indexOfCorrectLetter = [];
 
     //Runs if the key pressed is between a-z only, so it does not waste time with control, backspace, numbers etc.
+
+    //Regular expression?
     if ((65 <= keyCode) && (keyCode <= 90)) {
         
         //Loops through wordArray, and compares the values at each index
