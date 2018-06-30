@@ -19,7 +19,7 @@ var words = [
     "Top Gun", 
     "Dirty Dancing", 
     "Better Off Dead", 
-    "E.T. the Extra-Terrestrial", 
+    "E.T. the Extra Terrestrial", 
     "The Goonies", 
     "Ghostbusters", 
     "Back To The Future", 
