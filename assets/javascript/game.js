@@ -78,7 +78,7 @@ function blankizer(){
     
     //Loops through blankArray and converts all letter characters to
     //underscores, while preserving any punctuation
-    $.each(blankArray, function(index, value){
+    blankArray.forEach(function(value, index){
         if (value === " " || value === "'" || value === "&" || value === "."){
 
         }
@@ -91,7 +91,7 @@ function blankizer(){
     displayArray = blankArray.join("");
 
     //Updates the browser with the new text
-    $(".text-goes-here").text(displayArray);
+    document.getElementById("text-goes-here").innerHTML = (displayArray);
 
 };
 
@@ -116,7 +116,7 @@ function guesser(key){
         //Loops through wordArray, and compares the values at each index
         //to the key pressed. If it matches, the index number is added
         //to the indexOfCorrectLetter array for future use.
-        $.each(wordArray, function(index, value){
+        wordArray.forEach(function(value, index){
             if (keyLetter === value){
                 indexOfCorrectLetter.push(index);
             };
@@ -128,10 +128,10 @@ function guesser(key){
         //Then updates the screen
         if (indexOfCorrectLetter.length === 0){
             triesRemaining--;
-            $("#counter").text("Tries Remaining: " + triesRemaining);
+            document.getElementById("counter").innerHTML = ("Tries Left: " + triesRemaining);
             
             //Adds incorrect letters to the bank at the bottom.
-            $.each(guessedLetters, function(index, value){
+            guessedLetters.forEach(function(value, index){
                 if (value === keyLetter);
                 });
     
@@ -149,7 +149,7 @@ function guesser(key){
 
         //Goes through the blank array and changes the corresponding
         //indexes to the guessed letter, if correct.
-        $.each(indexOfCorrectLetter, function(index, value){
+        indexOfCorrectLetter.forEach(function(value, index){
             blankArray[value] = keyLetter;
         });
 
@@ -157,8 +157,8 @@ function guesser(key){
         displayArray = blankArray.join("");
 
         //Updates the html elements on screen
-        $(".guessed-letters").text(guessedLettersUnique);
-        $(".text-goes-here").text(displayArray);
+        document.getElementById("guessed-letters").innerHTML =(guessedLettersUnique);
+        document.getElementById("text-goes-here").innerHTML = (displayArray);
         
         //If the user runs out of tries, it is alerted, losses is incremented by 1, and the reset function is called.
         if (triesRemaining <= 0){
@@ -181,8 +181,8 @@ function reset(){
     blankizer();
     guessedLetters = [];
     triesRemaining = 10;
-    $(".guessed-letters").text(guessedLetters);
-    $("#counter").text("Tries Remaining: " + triesRemaining);
-    $(".wins").text("Wins: " + wins);
-    $(".losses").text("Losses: " + losses);
+    document.getElementById("guessed-letters").innerHTML = (guessedLetters);
+    document.getElementById("counter").innerHTML = ("Tries Left: " + triesRemaining);
+    document.getElementById("wins").innerHTML = ("Wins: " + wins);
+    document.getElementById("losses").innerHTML = ("Losses: " + losses);
 };

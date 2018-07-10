@@ -23,8 +23,6 @@
 
         <!-- JAVASCRIPT & JQUERY IMPORTS-->
 
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <!-- Bootstrap -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <!-- Bootstrap -->
@@ -43,7 +41,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="card border">
-                        <div id="button" class="h3 btn btn-lg text-white">New Word
+                        <div onclick="reset()" id="button" class="h3 btn btn-lg text-white">New Word
                         </div>
                     </div>
                 </div>
@@ -57,7 +55,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card border">
-                        <div class="h1 card-body text-white text-center text-goes-here">
+                        <div id="text-goes-here" class="h1 card-body text-white text-center">
                         </div>
                     </div>
                 </div>
@@ -65,7 +63,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card border">
-                        <div class="h1 card-body text-white text-center guessed-letters">
+                        <div id="guessed-letters" class="h1 card-body text-white text-center">
                         </div>
                     </div>
                 </div>
@@ -73,36 +71,19 @@
             <div class="row">
                 <div class="col-6">
                     <div class="card border">
-                        <div class="h4 card-body text-white text-center wins">
+                        <div id="wins" class="h4 card-body text-white text-center">
                             Wins: 0
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="card border">
-                        <div class="h4 card-body text-white text-center losses">
+                        <div id="losses" class="h4 card-body text-white text-center">
                             Losses: 0
                         </div>
                     </div>
                 </div>
             </div>        
-
-            <script>
-                $(document).ready(function() {
-
-                    blankizer();
-
-                    $("#button").on("click", function(){
-                        reset();
-                    });
-
-                    window.onkeyup = function(key){
-                        guesser(key);
-                    };
-                
-                });
-            </script>
-
             <div class="row">
                 <div class="col-12">
                     <footer class="text-white-50"> Some music for your ear-viewing pleasure.
@@ -116,5 +97,12 @@
                 </div>
             </div>
         </div>
+        <script>
+            blankizer();
+
+            window.onkeyup = function(key){
+                guesser(key);
+            };
+        </script>
     </body>
 </html>
