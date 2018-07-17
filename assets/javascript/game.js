@@ -111,7 +111,9 @@ function guesser(key){
     //Runs if the key pressed is between a-z only, so it does not waste time with control, backspace, numbers etc.
 
     //Regular expression?
-    if ((65 <= keyCode) && (keyCode <= 90)) {
+    //if ((65 <= keyCode) && (keyCode <= 90)) { /[a-z]/
+    var regex = RegExp("/[a-z.]+/");
+    if (keyCode.match(regex)) {
         
         //Loops through wordArray, and compares the values at each index
         //to the key pressed. If it matches, the index number is added
